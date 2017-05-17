@@ -13,6 +13,14 @@
         </activity>
         <activity android:name=".PersonActivity">
         </activity>
+        <activity android:name=".UrlActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="www.person-app.com" android:scheme="http" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
