@@ -10,11 +10,13 @@
     tools:context="com.aor.androidexample.ListActivity">
 
     <EditText
+        android:id="@+id/edit_username"
         android:hint="Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/edit_password"
         android:hint="Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

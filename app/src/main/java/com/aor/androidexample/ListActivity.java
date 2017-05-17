@@ -3,48 +3,35 @@ package com.aor.androidexample;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 
 public class ListActivity extends AppCompatActivity {
+    private static final String STATE_USERNAME = "USERNAME";
+    private static final String STATE_PASSWORD = "PASSWORD";
+
+    private EditText mUsername;
+    private EditText mPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        Log.d("AndroidExample", "ON CREATE");
+        mUsername = (EditText) findViewById(R.id.edit_username);
+        mPassword = (EditText) findViewById(R.id.edit_username);
     }
 
     @Override
-    protected void onStart() {
-        super.onResume();
-
-        Log.d("AndroidExample", "ON START");
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putString(STATE_USERNAME, mUsername.getText().toString());
+        savedInstanceState.putString(STATE_PASSWORD, mPassword.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-
-        Log.d("AndroidExample", "ON STOP");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("AndroidExample", "ON PAUSE");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Log.d("AndroidExample", "ON RESUME");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-
-        Log.d("AndroidExample", "ON RESTART");
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mUsername.setText(savedInstanceState.getString(STATE_USERNAME));
+        mPassword.setText(savedInstanceState.getString(STATE_PASSWORD));
     }
 }
