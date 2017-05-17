@@ -21,7 +21,6 @@ public class ListActivity extends AppCompatActivity {
     private Button buttonAdd;
 
     private ListView listPeople;
-    private List<Person> people;
     private PersonAdapter personAdapter;
 
     @Override
@@ -29,12 +28,10 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        people = new ArrayList<>();
-
         editUsername = (EditText) findViewById(R.id.edit_name);
         editMail = (EditText) findViewById(R.id.edit_email);
 
-        personAdapter = new PersonAdapter(ListActivity.this, people);
+        personAdapter = new PersonAdapter(ListActivity.this, new ArrayList<Person>());
         listPeople = (ListView) findViewById(R.id.list_people);
         listPeople.setAdapter(personAdapter);
 
@@ -42,8 +39,8 @@ public class ListActivity extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                people.add(new Person(editUsername.getText().toString(), editMail.getText().toString()));
-                personAdapter.notifyDataSetChanged();
+                personAdapter.add(new Person(editUsername.getText().toString(), editMail.getText().toString()));
+                //personAdapter.notifyDataSetChanged();
             }
         });
     }
